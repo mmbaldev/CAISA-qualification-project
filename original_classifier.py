@@ -1,3 +1,4 @@
+import os
 import sys
 import argparse
 import numpy as np
@@ -5,6 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
 from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
+
 
 ##########################
 #  Feature computation
@@ -51,7 +53,8 @@ class FeatureComputer():
  
         return result
 
-	def compute_idf(self, documents): # TODO
+    # Correction: fix the identation of the following function
+    def compute_idf(self, documents): # TODO
         """ Compute inverse document frequency dict for all words across
         all documents"""
         results = {}
@@ -106,6 +109,7 @@ def read_data(data):
     log = open(data,'rw')
     lines = log.readlines()
     firstline = True # Skip firstline, since it contains the description of the text columns
+    # Correction change name to line
     for l in lines:
         if firstline:
             continue
@@ -122,9 +126,12 @@ def get_best_features(data): # TODO
 #       Classifier
 ##########################
 
+
+# Correction: Add os import on top
 path = os.getcwd()
 
-print "Loading data..."
+# Correction: fix the print method- add parentheses
+print ("Loading data...")
 train = read_data('train.tsv')
 test = read_data('test.tsv')
 
